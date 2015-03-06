@@ -8,7 +8,7 @@ module.exports = function toArray(object) {
     var result, length, i;
 
     if (isArrayLike(object)) {
-        length = object.length;
+        length = object.length < 0 ? 0 : object.length;
 
         if (length === 0 || (length - 1) in object) {
             if (object.hasOwnProperty) {
