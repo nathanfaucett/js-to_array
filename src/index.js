@@ -4,7 +4,10 @@ var isArrayLike = require("is_array_like");
 var arraySlice = Array.prototype.slice;
 
 
-module.exports = function toArray(object) {
+module.exports = toArray;
+
+
+function toArray(object) {
     var result, length, i;
 
     if (isArrayLike(object)) {
@@ -32,4 +35,4 @@ module.exports = function toArray(object) {
     } else {
         throw TypeError("toArray(object) Array like object expected");
     }
-};
+}
