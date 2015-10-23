@@ -1,22 +1,22 @@
 var isArrayLike = require("is_array_like");
 
 
-var arraySlice = Array.prototype.slice;
+var Array_slice = Array.prototype.slice;
 
 
 module.exports = toArray;
 
 
-function toArray(object) {
+function toArray(value) {
     var result, length, i;
 
-    if (isArrayLike(object)) {
-        length = object.length < 0 ? 0 : object.length;
+    if (isArrayLike(value)) {
+        length = value.length < 0 ? 0 : value.length;
 
-        if (length === 0 || (length - 1) in object) {
-            if (object.hasOwnProperty) {
+        if (length === 0 || (length - 1) in value) {
+            if (value.hasOwnProperty) {
                 try {
-                    return arraySlice.call(object);
+                    return Array_slice.call(value);
                 } catch (e) {}
             }
 
@@ -24,15 +24,15 @@ function toArray(object) {
             i = 0;
 
             while (length--) {
-                result[i] = object[i];
+                result[i] = value[i];
                 i++;
             }
 
             return result;
         } else {
-            throw TypeError("toArray(object) Object should have keys for indices");
+            throw TypeError("toArray(value) value should have keys for indices");
         }
     } else {
-        throw TypeError("toArray(object) Array like object expected");
+        throw TypeError("toArray(value) Array like value expected");
     }
 }
