@@ -1,4 +1,4 @@
-var isArrayLike = require("is_array_like");
+var isArrayLike = require("@nathanfaucett/is_array_like");
 
 
 var Array_slice = Array.prototype.slice;
